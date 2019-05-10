@@ -24,12 +24,14 @@ export default () => (
       query={getImageData}
       render={({ allFile: { edges } }) => (
         <table>
-          <tr>
-            <th>Relative Path</th>
-            <th>Size</th>
-            <th>Extension</th>
-            <th>Birth time</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Relative Path</th>
+              <th>Size</th>
+              <th>Extension</th>
+              <th>Birth time</th>
+            </tr>
+          </thead>
           <tbody>
             {edges.map(
               (
