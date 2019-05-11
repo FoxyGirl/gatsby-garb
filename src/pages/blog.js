@@ -1,6 +1,6 @@
-import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import Layout from "../components/layout"
+import React from 'react'
+import { graphql, StaticQuery, Link } from 'gatsby'
+import Layout from '../components/layout'
 
 const getBlogData = graphql`
   {
@@ -8,6 +8,9 @@ const getBlogData = graphql`
       totalCount
       edges {
         node {
+          fields {
+            slug
+          }
           id
           frontmatter {
             title
@@ -30,14 +33,14 @@ export default () => (
           <>
             <h4
               style={{
-                display: "block",
-                marginTop: "5px",
-                paddingLeft: "30px",
-                color: "#bbb",
-                fontWeight: "normal",
+                display: 'block',
+                marginTop: '5px',
+                paddingLeft: '30px',
+                color: '#bbb',
+                fontWeight: 'normal',
               }}
             >
-              {" "}
+              {' '}
               Amount of posts: {totalCount}
             </h4>
             {edges.map(
@@ -45,25 +48,27 @@ export default () => (
                 node: {
                   id,
                   frontmatter: { title, date },
+                  fields: { slug },
                   excerpt,
                 },
               }) => (
-                <div key={id}>
-                  <h3 style={{ color: "darkblue" }}>
-                    {title}{" "}
+                <div key={id} style={{ marginBottom: '50px' }}>
+                  <h3 style={{ color: 'darkblue' }}>
+                    <Link to={`/posts/${slug}`}>{title} </Link>
                     <span
                       style={{
-                        display: "block",
-                        marginTop: "10px",
-                        color: "#bbb",
-                        fontWeight: "normal",
-                        fontSize: "0.9em",
+                        display: 'block',
+                        marginTop: '10px',
+                        color: '#bbb',
+                        fontWeight: 'normal',
+                        fontSize: '0.9em',
                       }}
                     >
                       published {date}
                     </span>
                   </h3>
                   <p>{excerpt}</p>
+                  <Link to={`/posts/${slug}`}>Read more</Link>
                 </div>
               )
             )}
