@@ -8,7 +8,7 @@ export default ({
   },
   pageContext,
 }) => {
-  const { currentPage, isFirstPage, isLastPage } = pageContext
+  const { currentPage, isFirstPage, isLastPage, totalPages } = pageContext
   console.log('currentPage', currentPage)
   console.log('isFirstPage', isFirstPage)
 
@@ -62,12 +62,25 @@ export default ({
           )
         )}
         {/* Pagintaion Links*/}
-        <div style={{ marginBottom: '50px' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            maxWidth: 400,
+            margin: '0 auto 50px',
+          }}
+        >
           {!isFirstPage && (
-            <Link to={prevPage} rel="prev" style={{ marginRight: '30px' }}>
+            <Link to={prevPage} rel="prev">
               Prev Page
             </Link>
           )}
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Link key={index} to={`/blog/${index === 0 ? '' : index + 1}`}>
+              {index + 1}
+            </Link>
+          ))}
           {!isLastPage && (
             <Link to={nextPage} rel="next">
               Next Page
@@ -81,7 +94,11 @@ export default ({
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(skip: $skip, limit: $limit) {
+    allMarkdownRemark(
+      skip: $skip
+      limit: $limit
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       totalCount
       edges {
         node {
@@ -91,7 +108,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            date
+            date(fromNow: true, formatString: "dddd, MMM DD YYYY")
           }
           excerpt
         }
