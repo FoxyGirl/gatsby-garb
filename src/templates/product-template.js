@@ -15,7 +15,10 @@ const ProductTemplate = ({ data: { contentfulProduct } }) => (
         }`}</span>
       </h2>
       <p>{contentfulProduct.description}</p>
-      <Img fluid={contentfulProduct.image.fluid} />
+      <Img
+        fluid={contentfulProduct.image.fluid}
+        style={{ margin: '0 auto', maxWidth: 600 }}
+      />
       <p style={{ color: '#aaa', fontSize: '14px' }}>{`Updated at ${
         contentfulProduct.updatedAt
       }`}</p>
