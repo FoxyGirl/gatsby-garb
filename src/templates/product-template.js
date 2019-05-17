@@ -7,6 +7,7 @@ const ProductTemplate = ({ data: { contentfulProduct } }) => (
   <Layout>
     <div>
       {/* Product Info */}
+      {console.log({ contentfulProduct })}
       <h2>
         {contentfulProduct.name} -
         <span style={{ color: '#ccc' }}>{`Added at ${
@@ -15,7 +16,7 @@ const ProductTemplate = ({ data: { contentfulProduct } }) => (
       </h2>
       <p>{contentfulProduct.description}</p>
       <Img fluid={contentfulProduct.image.fluid} />
-      <p style={{ color: '#ccc', fontSize: '12px' }}>{`Updated at ${
+      <p style={{ color: '#aaa', fontSize: '14px' }}>{`Updated at ${
         contentfulProduct.updatedAt
       }`}</p>
     </div>
@@ -28,7 +29,7 @@ export const query = graphql`
       name
       price
       description
-      createdAt(formatString: "MMMM Do, YYYY, h:mm:ss")
+      createdAt(formatString: "MMMM Do, YYYY, h:mm:ss a")
       updatedAt(formatString: "MMMM Do, YYYY, h:mm:ss a")
       image {
         fluid(maxWidth: 800) {
