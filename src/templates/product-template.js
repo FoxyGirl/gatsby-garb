@@ -9,15 +9,22 @@ const ProductTemplate = ({ data: { contentfulProduct } }) => (
       {/* Product Info */}
       {console.log({ contentfulProduct })}
       <h2>
-        {contentfulProduct.name} -
-        <span style={{ color: '#ccc' }}>{`Added at ${
-          contentfulProduct.createdAt
-        }`}</span>
+        {contentfulProduct.name}
+        <span
+          style={{
+            display: 'block',
+            marginTop: 10,
+            fontSize: '1.2rem',
+            fontWeight: 300,
+            color: '#a4a2a2',
+          }}
+        >{`Added at ${contentfulProduct.createdAt}`}</span>
       </h2>
+      <h4>${contentfulProduct.price}</h4>
       <p>{contentfulProduct.description}</p>
       <Img
         fluid={contentfulProduct.image.fluid}
-        style={{ margin: '0 auto', maxWidth: 600 }}
+        style={{ margin: '0 auto', maxWidth: 400 }}
       />
       <p style={{ color: '#aaa', fontSize: '14px' }}>{`Updated at ${
         contentfulProduct.updatedAt
