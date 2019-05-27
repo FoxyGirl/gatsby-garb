@@ -24,6 +24,14 @@ const ProductTemplate = ({ data: { contentfulProduct }, location }) => (
       <p>{contentfulProduct.description}</p>
       <div style={{ marginBottom: 50 }}>
         <button
+          style={{
+            backgroundColor: 'darkorange',
+            color: '#fff',
+            padding: '0.3em 1em',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            fontFamily: 'sans-serif',
+          }}
           className="snipcart-add-item"
           data-item-id={contentfulProduct.slug}
           data-item-price={contentfulProduct.price}
