@@ -6,6 +6,9 @@ import gatsbyLogo from '../images/gatsby-icon.png'
 const Header = ({ siteTitle }) => (
   <header
     style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
@@ -47,12 +50,26 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
       {/* Shopping cart Summary */}
-      <div className="snipcart-summary  snipcart-checkout">
+      <div
+        className="snipcart-summary  snipcart-checkout"
+        style={{ color: '#fff', cursor: 'pointer' }}
+      >
         <div>
           <strong>My Cart</strong>
         </div>
         <div>
-          <span className="snipcart-total-items" /> Items in cart
+          <span
+            style={{ fontweight: 'bold' }}
+            className="snipcart-total-items"
+          />{' '}
+          Items in cart
+        </div>
+        <div className="">
+          Total price{' '}
+          <span
+            style={{ fontweight: 'bold' }}
+            className="snipcart-total-price"
+          />
         </div>
       </div>
     </div>
