@@ -3,18 +3,26 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import gatsbyLogo from '../images/gatsby-icon.png'
 
+const isActive = ({ isCurrent }) => {
+  return { className: isCurrent ? 'active' : 'navlink' }
+}
+
+const NavLink = props => (
+  <Link getProps={isActive} {...props} style={{ marginRight: 40 }} />
+)
+
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
   >
     <div
       style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
@@ -39,16 +47,12 @@ const Header = ({ siteTitle }) => (
             borderRadius: '50%',
           }}
         />
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
+        <NavLink to="/">{siteTitle}</NavLink>
       </h1>
+      <nav>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/products">Store</NavLink>
+      </nav>
       {/* Shopping cart Summary */}
       <div
         className="snipcart-summary  snipcart-checkout"
@@ -71,6 +75,11 @@ const Header = ({ siteTitle }) => (
             className="snipcart-total-price"
           />
         </div>
+      </div>
+      <div className="snipcart-summary">
+        <a href="#" className="snipcart-user-email snipcart-user-profile">
+          Customer dashboard
+        </a>
       </div>
     </div>
   </header>
