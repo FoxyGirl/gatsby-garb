@@ -16,7 +16,7 @@
     "gatsby-remark-images": "^3.0.11",
     "gatsby-source-contentful": "^2.0.58",
     "gatsby-source-filesystem": "^2.0.33",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.19",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
